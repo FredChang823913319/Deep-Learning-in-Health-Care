@@ -6,6 +6,6 @@
 ## Validate KSI framework with new RNN baseline model
 Developed by:
 
-Haocheng Zhan
+Haocheng Zhang
 
 Kehang Chang Fred
