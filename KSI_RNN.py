@@ -196,11 +196,14 @@ def trainmodel(model, sim):
             return modelsaved[bestiter]
 
 def testmodel(modelstate, sim):
+    #--------reload model static params-----#
     model = RNN(batchsize, len(word_to_ix), len(label_to_ix))
     model.cuda()
     model.load_state_dict(modelstate)
     loss_function = nn.BCELoss()
     model.eval()
+    #---------------------------------------#
+    
     recall=[]
     lossestest = []
     
@@ -209,17 +212,19 @@ def testmodel(modelstate, sim):
     
     
     for inputs in batchtest_data:
+        #re-init hidden layers on each test
         model.hidden = model.init_hidden()
         targets = inputs[2].cuda()
         
+        #test model
         tag_scores = model(inputs[0].cuda(),inputs[1].cuda() ,wikivec.cuda(),sim)
-
+        #calc loss
         loss = loss_function(tag_scores, targets)
         
         targets=targets.data.cpu().numpy()
         tag_scores= tag_scores.data.cpu().numpy()
         
-        
+        #tracking loss
         lossestest.append(loss.data.mean())
         y_true.append(targets)
         y_scores.append(tag_scores)
@@ -243,6 +248,8 @@ def testmodel(modelstate, sim):
     y_scores=y_scores.T
     temptrue=[]
     tempscores=[]
+    
+    #prepare trues and scores for later performance calc
     for  col in range(0,len(y_true)):
         if np.sum(y_true[col])!=0:
             temptrue.append(y_true[col])
@@ -251,7 +258,11 @@ def testmodel(modelstate, sim):
     tempscores=np.array(tempscores)
     y_true=temptrue.T
     y_scores=tempscores.T
+    
+    #extract predictions
     y_pred=(y_scores>0.5).astype(np.int)
+    
+    #print all the metrics
     print ('test loss', torch.stack(lossestest).mean().item())
     print ('top-',topk, np.mean(recall))
     print ('macro AUC', roc_auc_score(y_true, y_scores,average='macro'))
@@ -259,22 +270,34 @@ def testmodel(modelstate, sim):
     print ('macro F1', f1_score(y_true, y_pred, average='macro')  )
     print ('micro F1', f1_score(y_true, y_pred, average='micro')  )
 
+# START all the training here
 model = RNN(batchsize, len(word_to_ix), len(label_to_ix), padding_idx)
 model.cuda()
+
+#use BCE loss as loss function
 loss_function = nn.BCELoss()
+#use Adam optimizer with lr
 optimizer = optim.Adam(model.parameters(), lr=lr)
+#train model with mode 0 (base RNN)
 basemodel= trainmodel(model, 0)
-# print('saving model: ', basemodel)
+#save base RNN model as file named 'RNN_model'
 torch.save(basemodel, 'RNN_model')
 
+#START all the KSI training here
 model = RNN(batchsize, len(word_to_ix), len(label_to_ix), padding_idx)
 model.cuda()
 model.load_state_dict(basemodel)
+
+#use BCE loss as loss function
 loss_function = nn.BCELoss()
+#use Adam optimizer with lr
 optimizer = optim.Adam(model.parameters(), lr=lr)
+#train model with mode 1 (KSI RNN)
 KSImodel= trainmodel(model, 1)
+#save KSI RNN model as file named 'KSI_RNN_model'
 torch.save(KSImodel, 'KSI_RNN_model')
 
+#print separater between two models' performances for better readability
 print ('RNN alone:           ')
 testmodel(basemodel, 0)
 print ('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
