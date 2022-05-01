@@ -46,7 +46,7 @@ Embeddingsize=100
 topk=10
 padding_idx=0
 lr=0.001
-epochs=5
+epochs=1000
 dropout=0.2
 hidden_dim=200
 min_good_models=5
@@ -192,8 +192,7 @@ def trainmodel(model, sim):
             print (modelperform,bestiter)
             return modelsaved[bestiter]
         else:
-            print('Not enough min models, try to increase epochs for best results.')
-            return modelsaved[bestiter]
+            print('Not enough min models, keep training...')
 
 def testmodel(modelstate, sim):
     #--------reload model static params-----#
