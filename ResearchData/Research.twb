@@ -26,7 +26,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='research_results' name='excel-direct.1ubl9rf1toesux1aa7yqc1l3xh0h'>
-            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/hz/Downloads/research_results.xlsx' interpretationMode='0' password='' server='' validate='no' />
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/hz/OneDrive/Documents/Deeping-Learning-in-Healtch-Care/ResearchData/research_results.xlsx' interpretationMode='0' password='' server='' validate='no' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='excel-direct.1ubl9rf1toesux1aa7yqc1l3xh0h' name='Sheet1' table='[Sheet1$]' type='table'>
@@ -913,7 +913,7 @@
       </viewpoint>
       <simple-id uuid='{85033818-F3C5-4D4D-8FBF-603A14B4F919}' />
     </window>
-    <window class='worksheet' name='RNN'>
+    <window class='worksheet' maximized='true' name='RNN'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -950,7 +950,7 @@
       </viewpoint>
       <simple-id uuid='{31CB4B10-BF4B-4EEE-AE1A-BA38340A673C}' />
     </window>
-    <window class='worksheet' maximized='true' name='Result'>
+    <window class='worksheet' name='Result'>
       <cards>
         <edge name='left'>
           <strip size='160'>
