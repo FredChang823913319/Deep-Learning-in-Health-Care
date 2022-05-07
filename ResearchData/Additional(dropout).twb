@@ -25,7 +25,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='additional_results(dropout)' name='excel-direct.1k2mak71xztk8d1gmlax50z356f5'>
-            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/hz/Downloads/additional_results(dropout).xlsx' interpretationMode='0' password='' server='' validate='no' />
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/hz/OneDrive/Documents/Deeping-Learning-in-Healtch-Care/ResearchData/additional_results(dropout).xlsx' interpretationMode='0' password='' server='' validate='no' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='excel-direct.1k2mak71xztk8d1gmlax50z356f5' name='Sheet1' table='[Sheet1$]' type='table'>
@@ -182,8 +182,8 @@
       <aliases enabled='yes' />
       <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
         <aliases>
-          <alias key='&quot;[federated.0w5cs8g1d8i39p11yph0x1i2ezeh].[sum:KSI::qk]&quot;' value='KSI+dropout 0.2:' />
-          <alias key='&quot;[federated.0w5cs8g1d8i39p11yph0x1i2ezeh].[sum:Regular::qk]&quot;' value='Dropout 0.2:' />
+          <alias key='&quot;[federated.0w5cs8g1d8i39p11yph0x1i2ezeh].[sum:KSI::qk]&quot;' value='KSI+dropout 0.2 (Paper):' />
+          <alias key='&quot;[federated.0w5cs8g1d8i39p11yph0x1i2ezeh].[sum:Regular::qk]&quot;' value='Dropout 0.2 (Paper):' />
         </aliases>
       </column>
       <column datatype='real' name='[KSI+dropout 0.1:]' role='measure' type='quantitative' />
@@ -402,11 +402,10 @@
         </edge>
       </cards>
       <viewpoint>
-        <highlight field='[federated.0w5cs8g1d8i39p11yph0x1i2ezeh].[:Measure Names]'>
+        <highlight>
           <color-one-way>
             <field>[federated.0w5cs8g1d8i39p11yph0x1i2ezeh].[none:Title:nk]</field>
           </color-one-way>
-          <bucket-selection />
         </highlight>
       </viewpoint>
       <simple-id uuid='{6944C04D-7FC9-4342-B7B8-D25A07FE64A3}' />
