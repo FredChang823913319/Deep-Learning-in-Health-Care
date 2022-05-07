@@ -71,4 +71,5 @@ Please contact Kehang Chang Fred (kehangc2@illinois.edu) or Haocheng Zhang (hz46
 ```
 Haocheng Zhang
 Kehang Chang Fred
+Authors in the original paper
 ```
