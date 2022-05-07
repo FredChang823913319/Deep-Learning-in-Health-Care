@@ -68,5 +68,7 @@ Please contact Kehang Chang Fred (kehangc2@illinois.edu) or Haocheng Zhang (hz46
 
 ## Developers
 
+```
 Haocheng Zhang
 Kehang Chang Fred
+```
