@@ -44,6 +44,7 @@ python KSI_RNN.py
 
 ## Results
 
+```
 RNN alone:
 test loss 0.034417975693941116
 top- 10 0.7631632859068936
@@ -59,6 +60,7 @@ macro AUC 0.8888887525103507
 micro AUC 0.9759802345174364
 macro F1 0.2710837962500303
 micro F1 0.6605456106744171
+```
 
 ## Contributing
 
